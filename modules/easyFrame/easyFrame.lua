@@ -257,7 +257,7 @@ local function DrawGroupSecondary2(container)
 
     local callbacksSize = {
     OnValueChanged = function (value, container, event, group)  end ,
-    OnMouseUp = function (self) SendChatMessage(".gob s scale "..qsGob:GetText().." "..qsSliderSize.editbox:GetText(), "SAY") end ,
+    OnMouseUp = function (self) SendChatMessage(".gob set scale "..qsGob:GetText().." "..qsSliderSize.editbox:GetText(), "SAY") end ,
     }
     Brikabrok:addCallbacks(qsSliderSize, callbacksSize)
 
@@ -577,7 +577,7 @@ local function DrawGroupSecondary3(container)
 			  oCurrentPos:SetText("Orientation: "..Brikabrok.plyOrientation.." radian(s) soit "..shortDegrees.." degré(s)")
 		  end
       elseif strfind(msg,"Map:") then
-        for map in string.gmatch(msg, "Map: (%d+) %(%)") do
+        for map in string.gmatch(msg, "Map: (%d+) %(.*%)") do
             Brikabrok.currentMap = map
         end
       end

@@ -49,7 +49,7 @@ local wrapperNoLinks = {
 	{"Object '(%d+)","Object '(%d+)'","%1"},
 	{"(DisplayID: (%d+))","(DisplayID: (%d+))","%1"},
 	{"%((Native: (%d+))%)","%((Native: (%d+))%)","%1"},
-	{"DB GUID: (%d+)%,","(DB GUID: (%d+)%,)","%1"},
+	{"SpawnID: (%d+)%.","(SpawnID: (%d+)%.)","%1"},
 	{"%((GUID: (%d+))%)","%((GUID: (%d+))%)","%1"},
 }
 
@@ -154,7 +154,7 @@ end
 
 
 function Brikabrok.ShowPreview(worldPath)
-	   Brikabrok.previewWindow = StdUi:Window(nil, 'Le Brikabrok', 300, 400);
+	   Brikabrok.previewWindow = StdUi:Window(nil, 300, 400, 'Le Brikabrok');
 	   Brikabrok.previewWindow:SetPoint('CENTER');
 	   
 	   Brikabrok.previewModel = CreateFrame("DressUpModel", nil, Brikabrok.previewWindow, "ModelWithControlsTemplate")
@@ -191,12 +191,9 @@ end
 
 function Brikabrok.previewGob(self,event,msg,...)
 		if strfind(msg,"Name: ") then
-			--print("founded")
 			local lastCharacter = string.sub(msg, -5)
 			local gobName = strsub(msg,7,tonumber(lastCharacter))
 			local gobFixName = gobName:gsub('%s+', '')
-			--print(gobFixName)
-			--print(BrikabrokGobList[199748])
 			if strfind(gobFixName,".m2") then
 				for k, v in pairs(BrikabrokGobList) do
 					local stringClear = v:lower()

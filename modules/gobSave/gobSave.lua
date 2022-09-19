@@ -180,7 +180,7 @@ function BrikabrokGOBSAVE:OnEnable()
 		end
 
 
-		Brikabrok.gobBWindow = StdUi:Window(UIParent, 'Brikabrok Wayback Machine', 700, 500);
+		Brikabrok.gobBWindow = StdUi:Window(UIParent, 700, 500, 'Brikabrok Wayback Machine');
 		Brikabrok.gobBWindow:SetPoint('CENTER');
 
 		local searchBox = StdUi:SearchEditBox(Brikabrok.gobBWindow, 400, 30, 'Écrivez le mot clé ici');

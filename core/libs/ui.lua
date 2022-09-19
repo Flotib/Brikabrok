@@ -679,7 +679,6 @@ function Brikabrok:SpellsReload(text)
   spellsfiltertable = {}
   for i = 1, #Brikabrok.db.profile.spells do
     if not Brikabrok.db.profile.spells[i] then
-      print (i)
         return false
     end
     local sMeme = Brikabrok.db.profile.spells[i][2]

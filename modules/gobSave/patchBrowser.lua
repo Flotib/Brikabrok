@@ -89,7 +89,7 @@ end
 function Brikabrok.ShowPatchBrowserFrame()
 
 
-   Brikabrok.itemPatchWindow = StdUi:Window(UIParent, 'Brikabrok Patch Viewer', 715, 500);
+   Brikabrok.itemPatchWindow = StdUi:Window(UIParent, 715, 500, 'Brikabrok Patch Viewer');
    Brikabrok.itemPatchWindow:SetPoint('CENTER');
 
 

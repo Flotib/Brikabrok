@@ -1157,7 +1157,7 @@ function Brikabrok:ShowGlancesFrame(dataType)
 
 	local buildTable  = {}
 
-	local iconBrowserFrame = StdUi:Window(nil, "Brikabrok : Coup d'oeil", 800, 600);
+	local iconBrowserFrame = StdUi:Window(nil, 800, 600, "Brikabrok : Coup d'oeil");
 	iconBrowserFrame:SetPoint('CENTER');
 
 	local searchBox = StdUi:SearchEditBox(iconBrowserFrame, 400, 30, 'Écrivez le mot clé ici');

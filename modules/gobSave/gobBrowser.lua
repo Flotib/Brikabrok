@@ -51,7 +51,7 @@ local StdUi = LibStub('StdUi');
 	Brikabrok.BMWS = 1;
 	
 	function Brikabrok.ShowGobBrowserFrame()
-		Brikabrok.gobBWindow = StdUi:Window(UIParent, 'Brikabrok Model Viewer', 700, 500);
+		Brikabrok.gobBWindow = StdUi:Window(UIParent, 700, 500, 'Brikabrok Model Viewer');
 		Brikabrok.gobBWindow:SetPoint('CENTER');
 
 		local searchBox = StdUi:SearchEditBox(Brikabrok.gobBWindow, 400, 30, 'Écrivez le mot clé ici');

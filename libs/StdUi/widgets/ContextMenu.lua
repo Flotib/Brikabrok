@@ -1,21 +1,66 @@
 --- @type StdUi
 local StdUi = LibStub and LibStub('StdUi', true);
 if not StdUi then
-	return;
+	return
 end
 
-local module, version = 'ContextMenu', 2;
-if not StdUi:UpgradeNeeded(module, version) then return end;
+local module, version = 'ContextMenu', 3;
+if not StdUi:UpgradeNeeded(module, version) then
+	return
+end
+
+--- ContextMenuItem Events
+
+local ContextMenuItemOnEnter = function(itemFrame, button)
+	itemFrame.parentContext:CloseSubMenus();
+
+	itemFrame.childContext:ClearAllPoints();
+	itemFrame.childContext:SetPoint('TOPLEFT', itemFrame, 'TOPRIGHT', 0, 0);
+	itemFrame.childContext:Show();
+end
+
+local ContextMenuItemOnMouseUp = function(itemFrame, button)
+	local hide
+	if button == 'LeftButton' and itemFrame.contextMenuData.callback then
+		hide = itemFrame.contextMenuData.callback(itemFrame, itemFrame.parentContext)
+	elseif button == 'RightButton' then
+		hide = true
+	end
+	if hide == true and itemFrame.mainContext then
+		itemFrame.mainContext:Hide()
+	end
+end
+
+--- ContextMenuEvents
+
+local ContextMenuOnMouseUp = function(self, button)
+	if button == 'RightButton' then
+		local uiScale = UIParent:GetScale();
+		local cursorX, cursorY = GetCursorPosition();
+
+		cursorX = cursorX / uiScale;
+		cursorY = cursorY / uiScale;
+
+		self:ClearAllPoints();
+
+		if self:IsShown() then
+			self:Hide();
+		else
+			self:SetPoint('TOPLEFT', nil, 'BOTTOMLEFT', cursorX, cursorY);
+			self:Show();
+		end
+	end
+end
 
 ---@type ContextMenu
 StdUi.ContextMenuMethods = {
 
-	CloseMenu = function(self)
+	CloseMenu         = function(self)
 		self:CloseSubMenus();
 		self:Hide();
 	end,
 
-	CloseSubMenus = function(self)
+	CloseSubMenus     = function(self)
 		for i = 1, #self.optionFrames do
 			local optionFrame = self.optionFrames[i];
 			if optionFrame.childContext then
@@ -24,28 +69,12 @@ StdUi.ContextMenuMethods = {
 		end
 	end,
 
-	HookRightClick = function(self)
+	HookRightClick    = function(self)
 		local parent = self:GetParent();
 		if parent then
-			parent:HookScript('OnMouseUp', function(par, button)
-
-				if button == 'RightButton' then
-					local uiScale = UIParent:GetScale();
-					local cursorX, cursorY = GetCursorPosition();
-
-					cursorX = cursorX / uiScale;
-					cursorY = cursorY / uiScale;
-
-					self:ClearAllPoints();
-
-					if self:IsShown() then
-						self:Hide();
-					else
-						self:SetPoint('TOPLEFT', nil, 'BOTTOMLEFT', cursorX, cursorY);
-						self:Show();
-					end
-				end
-			end);
+			-- ContextMenuOnMouseUp requires a reference to this menu (self)
+			local menu = self -- don't trust magic variable names
+			parent:HookScript('OnMouseUp', function (_, button) ContextMenuOnMouseUp(menu, button) end);
 		end
 	end,
 
@@ -53,7 +82,7 @@ StdUi.ContextMenuMethods = {
 
 	end,
 
-	CreateItem = function(parent, data, i)
+	CreateItem        = function(parent, data, i)
 		local itemFrame;
 
 		if data.title then
@@ -75,6 +104,14 @@ StdUi.ContextMenuMethods = {
 			itemFrame = parent.stdUi:HighlightButton(parent, nil, 20);
 		end
 
+		itemFrame.contextMenuData = data;
+
+		-- Need mainContext on all items for right click compatibility.
+		-- This will also keep propagating mainContext thru all children.
+		-- Note: In the top-most level of items frames, the parent does NOT have a
+		-- mainContext, and in that case the parent itself IS the mainContext.
+		itemFrame.mainContext = parent.mainContext or parent
+
 		if not data.isSeparator then
 			itemFrame.text:SetJustifyH('LEFT');
 		end
@@ -86,16 +123,8 @@ StdUi.ContextMenuMethods = {
 
 			itemFrame.childContext = parent.stdUi:ContextMenu(parent, data.children, true, parent.level + 1);
 			itemFrame.parentContext = parent;
-			-- this will keep propagating mainContext thru all children
-			itemFrame.mainContext = parent.mainContext;
 
-			itemFrame:HookScript('OnEnter', function(itemFrame, button)
-				parent:CloseSubMenus();
-
-				itemFrame.childContext:ClearAllPoints();
-				itemFrame.childContext:SetPoint('TOPLEFT', itemFrame, 'TOPRIGHT', 0, 0);
-				itemFrame.childContext:Show();
-			end);
+			itemFrame:HookScript('OnEnter', ContextMenuItemOnEnter);
 		end
 
 		if data.events then
@@ -104,13 +133,8 @@ StdUi.ContextMenuMethods = {
 			end
 		end
 
-		if data.callback then
-			itemFrame:SetScript('OnMouseUp', function(frame, button)
-				if button == 'LeftButton' then
-					data.callback(frame, frame.parentContext)
-				end
-			end)
-		end
+		-- Always need Right click capability in item frames to close the menu
+		itemFrame:SetScript('OnMouseUp', ContextMenuItemOnMouseUp)
 
 		if data.custom then
 			for key, value in pairs(data.custom) do
@@ -121,7 +145,7 @@ StdUi.ContextMenuMethods = {
 		return itemFrame;
 	end,
 
-	UpdateItem = function(parent, itemFrame, data, i)
+	UpdateItem        = function(parent, itemFrame, data, i)
 		local padding = parent.padding;
 
 		if data.title then
@@ -143,7 +167,7 @@ StdUi.ContextMenuMethods = {
 			itemFrame:SetWidth(itemFrame:GetWidth() + 16);
 		end
 
-		if (parent:GetWidth() -  padding * 2) < itemFrame:GetWidth() then
+		if (parent:GetWidth() - padding * 2) < itemFrame:GetWidth() then
 			parent:SetWidth(itemFrame:GetWidth() + padding * 2);
 		end
 
@@ -155,7 +179,7 @@ StdUi.ContextMenuMethods = {
 		end
 	end,
 
-	DrawOptions = function(self, options)
+	DrawOptions       = function(self, options)
 		if not self.optionFrames then
 			self.optionFrames = {};
 		end
@@ -174,14 +198,14 @@ StdUi.ContextMenuMethods = {
 		self:SetHeight(totalHeight + self.padding);
 	end,
 
-	StartHideCounter = function(self)
+	StartHideCounter  = function(self)
 		if self.timer then
 			self.timer:Cancel();
 		end
 		self.timer = C_Timer:NewTimer(3, self.TimerCallback);
 	end,
 
-	StopHideCounter = function()
+	StopHideCounter   = function()
 
 	end
 };
@@ -204,12 +228,15 @@ function StdUi:ContextMenu(parent, options, stopHook, level)
 
 	panel:SetFrameStrata('FULLSCREEN_DIALOG');
 
-	for methodName, method in pairs(self.ContextMenuMethods) do
-		panel[methodName] = method;
+	-- force context menus to stay on the screen where they can be used
+	panel:SetClampedToScreen(true)
+
+	for k, v in pairs(self.ContextMenuMethods) do
+		panel[k] = v;
 	end
 
-	for eventName, eventHandler in pairs(self.ContextMenuEvents) do
-		panel:SetScript(eventName, eventHandler);
+	for k, v in pairs(self.ContextMenuEvents) do
+		panel:SetScript(k, v);
 	end
 
 	panel:DrawOptions(options);

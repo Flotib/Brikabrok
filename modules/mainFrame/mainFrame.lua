@@ -99,46 +99,11 @@ function Brikabrok:DrawGroup3(container)
 
   -- Very BAD code incoming, I didn't figure out how to do this yet properly in Lua :'(
   
-  local peauBox = AceGUI:Create("EditBox")
-  peauBox:SetText("Peau")
-  peauBox:SetLabel("Peau")
-  Brikabrok:addToScroll(peauBox)
-  
-  local visageBox = AceGUI:Create("EditBox")
-  visageBox:SetText("Visage")
-  visageBox:SetLabel("Visage")
-  Brikabrok:addToScroll(visageBox)
-  
-  local cheveuxBox = AceGUI:Create("EditBox")
-  cheveuxBox:SetText("Cheveux")
-  cheveuxBox:SetLabel("Cheveux")
-  Brikabrok:addToScroll(cheveuxBox)
-  
-  local couleurBox = AceGUI:Create("EditBox")
-  couleurBox:SetText("Couleur")
-  couleurBox:SetLabel("Couleur")
-  Brikabrok:addToScroll(couleurBox)
-  
-  local detailsBox = AceGUI:Create("EditBox")
-  detailsBox:SetText("Pilosité / Détails")
-  detailsBox:SetLabel("Pilosité / Détails")
-  Brikabrok:addToScroll(detailsBox)
-  
-  local tatouageBox = AceGUI:Create("EditBox")
-  tatouageBox:SetText("Tatouages")
-  tatouageBox:SetLabel("Tatouages")
-  Brikabrok:addToScroll(tatouageBox)
-  
-  local cornesBox = AceGUI:Create("EditBox")
-  cornesBox:SetText("Cornes")
-  cornesBox:SetLabel("Cornes")
-  Brikabrok:addToScroll(cornesBox)
-  
-  local bandeauBox = AceGUI:Create("EditBox")
-  bandeauBox:SetText("Bandeau")
-  bandeauBox:SetLabel("Bandeau")
-  Brikabrok:addToScroll(bandeauBox)
-  
+   local customCode = AceGUI:Create("EditBox")
+   customCode:SetText("Custom")
+   customCode:SetLabel("Custom")
+   Brikabrok:addToScroll(customCode)
+
   Brikabrok:createHeading("Tenue et armes")
 
   local editbox1 = AceGUI:Create("EditBox")
@@ -208,31 +173,31 @@ function Brikabrok:DrawGroup3(container)
 
 function findID (self,event,msg)
  if string.match (msg, "DisplayID du casque") then
-  for guid in string.gmatch(msg, "DisplayID du casque : (%-?%d+)") do
+  for guid in string.gmatch(msg, "DisplayID du casque : (%-?%d+).") do
      editbox1:SetText(guid)
   end
  elseif string.match (msg, "DisplayID des épaulières") then
-  for guid in string.gmatch(msg, "DisplayID des épaulières : (%-?%d+)") do
+  for guid in string.gmatch(msg, "DisplayID des épaulières : (%-?%d+).") do
      editbox2:SetText(guid)
   end
  elseif string.match (msg, "DisplayID de la chemise") then
-  for guid in string.gmatch(msg, "DisplayID de la chemise : (%-?%d+)") do
+  for guid in string.gmatch(msg, "DisplayID de la chemise : (%-?%d+).") do
      editbox3:SetText(guid)
   end
  elseif string.match (msg, "DisplayID du torse") then
-  for guid in string.gmatch(msg, "DisplayID du torse : (%-?%d+)") do
+  for guid in string.gmatch(msg, "DisplayID du torse : (%-?%d+).") do
      editbox4:SetText(guid)
   end
  elseif string.match (msg, "DisplayID de la ceinture") then
-  for guid in string.gmatch(msg, "DisplayID de la ceinture : (%-?%d+)") do
+  for guid in string.gmatch(msg, "DisplayID de la ceinture : (%-?%d+).") do
      editbox5:SetText(guid)
   end
  elseif string.match (msg, "DisplayID des jambières") then
-  for guid in string.gmatch(msg, "DisplayID des jambières : (%-?%d+)") do
+  for guid in string.gmatch(msg, "DisplayID des jambières : (%-?%d+).") do
      editbox6:SetText(guid)
   end
  elseif string.match (msg, "DisplayID des bottes") then
-  for guid in string.gmatch(msg, "DisplayID des bottes : (%-?%d+)") do
+  for guid in string.gmatch(msg, "DisplayID des bottes : (%-?%d+).") do
      editbox7:SetText(guid)
   end
  elseif string.match (msg, "DisplayID des brassards") then
@@ -240,56 +205,28 @@ function findID (self,event,msg)
      editbox8:SetText(guid)
   end
  elseif string.match (msg, "DisplayID des gants") then
-  for guid in string.gmatch(msg, "DisplayID des gants: (%-?%d+)") do
+  for guid in string.gmatch(msg, "DisplayID des gants: (%-?%d+).") do
      editbox9:SetText(guid)
   end
  elseif string.match (msg, "DisplayID de la cape") then
-  for guid in string.gmatch(msg, "DisplayID de la cape: (%-?%d+)") do
+  for guid in string.gmatch(msg, "DisplayID de la cape: (%-?%d+).") do
      editbox10:SetText(guid)
   end
  elseif string.match (msg, "DisplayID du tabard") then
-  for guid in string.gmatch(msg, "DisplayID du tabard: (%-?%d+)") do
+  for guid in string.gmatch(msg, "DisplayID du tabard: (%-?%d+).") do
      editbox11:SetText(guid)
   end
+ elseif string.match (msg, "Code Customisation") then
+   local firstHalf = msg:gsub('Code Customisation : ', '')
+   local sndHalf = firstHalf:sub(1, -2)
+   customCode:SetText(sndHalf)
  elseif string.match (msg, "ID de l'arme droite") then
-  for guid in string.gmatch(msg, "ID de l'arme droite : (%-?%d+)") do
-     editbox12:SetText(guid)
-  end
+   for guid in string.gmatch(msg, "ID de l'arme droite : (%-?%d+).") do
+      editbox12:SetText(guid)
+   end
  elseif string.match (msg, "ID de l'arme gauche") then
-  for guid in string.gmatch(msg, "ID de l'arme gauche : (%-?%d+)") do
+  for guid in string.gmatch(msg, "ID de l'arme gauche : (%-?%d+).") do
      editbox13:SetText(guid)
-  end
- elseif string.match (msg, "Peau :") then
-  for guid in string.gmatch(msg, "Peau : (%-?%d+)") do
-     peauBox:SetText(guid)
-  end
- elseif string.match (msg, "Visage :") then
-  for guid in string.gmatch(msg, "Visage : (%-?%d+)") do
-     visageBox:SetText(guid)
-  end
- elseif string.match (msg, "Cheveux :") then
-  for guid in string.gmatch(msg, "Cheveux : (%-?%d+)") do
-     cheveuxBox:SetText(guid)
-  end
- elseif string.match (msg, "Couleur :") then
-  for guid in string.gmatch(msg, "Couleur : (%-?%d+)") do
-     couleurBox:SetText(guid)
-  end
- elseif string.match (msg, "Pilosite/Details :") then
-  for guid in string.gmatch(msg, "Pilosite/Details : (%-?%d+)") do
-     detailsBox:SetText(guid)
-  end
- elseif string.match (msg, "Tatouage :") then
-  for guid in string.gmatch(msg, "Tatouage : (%-?%d+)") do
-     tatouageBox:SetText(guid)
-  end
- elseif string.match (msg, "Cornes :") then
-  for guid in string.gmatch(msg, "Cornes : (%-?%d+)") do
-     cornesBox:SetText(guid)
-  end
- elseif string.match (msg, "Bandeau :") then
-  for guid in string.gmatch(msg, "Bandeau : (%-?%d+)") do
-     bandeauBox:SetText(guid)
   end
   return false
  end
@@ -405,7 +342,7 @@ mainFrame:SetLayout("Fill")
 -- Add tabs here
 local tab =  AceGUI:Create("TabGroup")
 tab:SetLayout("Flow")
-tab:SetTabs({{text="Spells", value="tab1"},{text="Gobs", value="tab2"},{text="Forge", value="tab3"}, {text="Divers", value="tab4"}, {text="Animations", value="tab5"}, {text="Macros", value="tab6"}})
+tab:SetTabs({{text="Spells", value="tab1"},{text="Gobs", value="tab2"}, {text="Forge", value="tab3"}, {text="Divers", value="tab4"}, {text="Animations", value="tab5"}, {text="Macros", value="tab6"}})
 tab:SetCallback("OnGroupSelected", SelectGroup)
 tab:SelectTab("tab1")
 mainFrame:AddChild(tab)

@@ -186,7 +186,7 @@ local PaneBackdrop  = {
 }
 
 local function Constructor()
-    local frame = CreateFrame("Frame", "Brikabrok", UIParent)
+    local frame = CreateFrame("Frame", "Brikabrok", UIParent, BackdropTemplateMixin and "BackdropTemplate")
     frame:Hide()
 
     frame:EnableMouse(true)

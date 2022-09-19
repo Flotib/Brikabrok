@@ -45,7 +45,6 @@ function BrikabrokBubble:OnEnable()
                     if input:len() > 0 and Brikabrok:correctInput(input,".") and Brikabrok:correctInput(input,"/") then
                             local channel = chatOpened:GetAttribute("chatType")
                             if channel == "GUILD" or channel == "PARTY" or channel == "RAID" or channel == "WHISPER" or channel == "RAID_LEADER" or channel == "PARTY_LEADER" then
-                                --print("meme")
                             else
                                 SendChatMessage(".selfaura 140812")
                             end

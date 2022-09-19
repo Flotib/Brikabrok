@@ -200,7 +200,7 @@ end
 
 
 function Brikabrok:ShowIconFrame()
-   local searchWindow = StdUi:Window(UIParent, 'Créer des macros', 500, 550);
+   local searchWindow = StdUi:Window(UIParent, 500, 550, 'Créer des macros');
    StdUi:GlueRight(searchWindow, Brikabrok.MacroWindow, 5, 0);
    Brikabrok.IconWindow = searchWindow;
    
@@ -391,7 +391,7 @@ function Brikabrok:ShowMacroFrame()
    }
    
    
-   local window = StdUi:Window(UIParent, 'Créer des macros', 400, 500);
+   local window = StdUi:Window(UIParent, 400, 500,  'Créer des macros');
    window:SetPoint('CENTER');
    
    
