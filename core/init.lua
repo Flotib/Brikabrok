@@ -72,7 +72,7 @@ local defaults = {
         },
         dynamic_links = {
             active = true,
-			color = "cffffffe0",
+			color = "c00f48fff",
         },
         everything = {
             autoclose = false,

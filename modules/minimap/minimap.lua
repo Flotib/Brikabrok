@@ -79,9 +79,18 @@ function Brikabrok.MinimapButton_Details(tt, ldb)
 end
 
 function Brikabrok.MinimapButton_OnClick()
+  local a = 0
+  local b = 0
+  local c = 0
   buttonMod = GetMouseButtonClicked()
   if buttonMod == "LeftButton" then
-    Brikabrok:OpenMainFrame()
+    if a == 0 then
+      a = 1
+      Brikabrok:OpenMainFrame()
+    else 
+      a = 0
+      Brikabrok:OpenMainFrame()
+    end
   elseif buttonMod == "MiddleButton" then
     Brikabrok:ShowDevFrame()
   elseif buttonMod == "RightButton" then

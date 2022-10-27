@@ -293,6 +293,111 @@ function Brikabrok:DrawGroup6(container)
   Brikabrok.BuildMacrosData()
 end
 
+function Brikabrok:DrawGroup7(container)
+	Brikabrok:createHeading("Spells RP")
+  
+	local spellsOne = AceGUI:Create("Button")
+	spellsOne:SetPoint("Center")
+	spellsOne:SetText("Spells 1")
+	spellsOne:SetCallback("OnClick", function() SendChatMessage(".lea 196") SendChatMessage(".lea 197") SendChatMessage(".lea 198") SendChatMessage(".lea 199") SendChatMessage(".lea 200") SendChatMessage(".lea 201") SendChatMessage(".lea 202") SendChatMessage(".lea 227") SendChatMessage(".lea 264") SendChatMessage(".lea 266") SendChatMessage(".lea 5011") SendChatMessage(".lea 1180") SendChatMessage(".lea 15590") SendChatMessage(".lea 5009") SendChatMessage(".lea 9077") SendChatMessage(".lea 8737") SendChatMessage(".lea 750") SendChatMessage(".lea 9116") SendChatMessage(".lea 674") SendChatMessage(".lea 46917") SendChatMessage(".lea 100321") end)
+	Brikabrok:addToScroll(spellsOne)
+
+	local spellsTwo = AceGUI:Create("Button")
+	spellsTwo:SetPoint("Center")
+	spellsTwo:SetText("Spells 2")
+	spellsTwo:SetCallback("OnClick", function() SendChatMessage(".lea 42880") SendChatMessage(".lea 42902") SendChatMessage(".lea 42889") SendChatMessage(".lea 42901") SendChatMessage(".lea 69873") SendChatMessage(".lea 70092") SendChatMessage(".lea 42908") SendChatMessage(".lea 42906") SendChatMessage(".lea 42963") SendChatMessage(".lea 16723") SendChatMessage(".lea 88390") SendChatMessage(".lea 94610") SendChatMessage(".lea 80264") SendChatMessage(".lea 80109") SendChatMessage(".lea 74301") SendChatMessage(".lea 80612") SendChatMessage(".lea 45873") SendChatMessage(".lea 46581") SendChatMessage(".lea 73669") SendChatMessage(".lea 42871") SendChatMessage(".lea 93474") end)
+	Brikabrok:addToScroll(spellsTwo)
+
+	local spellsThree = AceGUI:Create("Button")
+	spellsThree:SetPoint("Center")
+	spellsThree:SetText("Spells 3")
+	spellsThree:SetCallback("OnClick", function() SendChatMessage(".lea 90265") SendChatMessage(".lea 90267") SendChatMessage(".lea 54197") SendChatMessage(".lea 55518") SendChatMessage(".lea 32759") SendChatMessage(".lea 71077") SendChatMessage(".lea 26659") SendChatMessage(".lea 16245") SendChatMessage(".lea 85500") SendChatMessage(".lea 104953") SendChatMessage(".lea 105008") SendChatMessage(".lea 90353") SendChatMessage(".lea 90699") SendChatMessage(".lea 91920") SendChatMessage(".lea 70153") SendChatMessage(".lea 58203") SendChatMessage(".lea 110154") SendChatMessage(".lea 105734") SendChatMessage(".lea 104945") SendChatMessage(".lea 80681") SendChatMessage(".lea 80676") end)
+	Brikabrok:addToScroll(spellsThree)
+
+	local spellsFour = AceGUI:Create("Button")
+	spellsFour:SetPoint("Center")
+	spellsFour:SetText("Spells 4")
+	spellsFour:SetCallback("OnClick", function() SendChatMessage(".lea 95479") SendChatMessage(".lea 95480") SendChatMessage(".lea 81041") SendChatMessage(".lea 94980") SendChatMessage(".lea 42336") SendChatMessage(".lea 83615") SendChatMessage(".lea 83610") SendChatMessage(".lea 86600") SendChatMessage(".lea 86600") SendChatMessage(".lea 84823") SendChatMessage(".lea 81245") SendChatMessage(".lea 82612") SendChatMessage(".lea 92372") SendChatMessage(".lea 80126") SendChatMessage(".lea 79756") SendChatMessage(".lea 79827") SendChatMessage(".lea 79832") SendChatMessage(".lea 76183") SendChatMessage(".lea 101624") SendChatMessage(".lea 84594") SendChatMessage(".lea 107082") end)
+	Brikabrok:addToScroll(spellsFour)
+
+	local spellsFive = AceGUI:Create("Button")
+	spellsFive:SetPoint("Center")
+	spellsFive:SetText("Spells 5")
+	spellsFive:SetCallback("OnClick", function() SendChatMessage(".lea 79116") SendChatMessage(".lea 84401") SendChatMessage(".lea 85234") SendChatMessage(".lea 92718") SendChatMessage(".lea 92719") SendChatMessage(".lea 71459") SendChatMessage(".lea 81083") SendChatMessage(".lea 81084") SendChatMessage(".lea 82020") SendChatMessage(".lea 93090") SendChatMessage(".lea 69191") SendChatMessage(".lea 90085") SendChatMessage(".lea 79157") SendChatMessage(".lea 79252") SendChatMessage(".lea 81723") SendChatMessage(".lea 97134") SendChatMessage(".lea 100320") SendChatMessage(".lea 69356") SendChatMessage(".lea 9487") SendChatMessage(".lea 79116") SendChatMessage(".lea 668") end)
+	Brikabrok:addToScroll(spellsFive)
+
+	local spellsSix = AceGUI:Create("Button")
+	spellsSix:SetPoint("Center")
+	spellsSix:SetText("Tout apprendre [!]Crash Risk")
+	spellsSix:SetCallback("OnClick", function() SendChatMessage(".lea 196") SendChatMessage(".lea 197") SendChatMessage(".lea 198") SendChatMessage(".lea 199") SendChatMessage(".lea 200") SendChatMessage(".lea 201") SendChatMessage(".lea 202") SendChatMessage(".lea 227") SendChatMessage(".lea 264") SendChatMessage(".lea 266") SendChatMessage(".lea 5011") SendChatMessage(".lea 1180") SendChatMessage(".lea 15590") SendChatMessage(".lea 5009") SendChatMessage(".lea 9077") SendChatMessage(".lea 8737") SendChatMessage(".lea 750") SendChatMessage(".lea 9116") SendChatMessage(".lea 674") SendChatMessage(".lea 46917") SendChatMessage(".lea 100321") SendChatMessage(".lea 42880") SendChatMessage(".lea 42902") SendChatMessage(".lea 42889") SendChatMessage(".lea 42901") SendChatMessage(".lea 69873") SendChatMessage(".lea 70092") SendChatMessage(".lea 42908") SendChatMessage(".lea 42906") SendChatMessage(".lea 42963") SendChatMessage(".lea 16723") SendChatMessage(".lea 88390") SendChatMessage(".lea 94610") SendChatMessage(".lea 80264") SendChatMessage(".lea 80109") SendChatMessage(".lea 74301") SendChatMessage(".lea 80612") SendChatMessage(".lea 45873") SendChatMessage(".lea 46581") SendChatMessage(".lea 73669") SendChatMessage(".lea 42871") SendChatMessage(".lea 93474") SendChatMessage(".lea 90265") SendChatMessage(".lea 90267") SendChatMessage(".lea 54197") SendChatMessage(".lea 55518") SendChatMessage(".lea 32759") SendChatMessage(".lea 71077") SendChatMessage(".lea 26659") SendChatMessage(".lea 16245") SendChatMessage(".lea 85500") SendChatMessage(".lea 104953") SendChatMessage(".lea 105008") SendChatMessage(".lea 90353") SendChatMessage(".lea 90699") SendChatMessage(".lea 91920") SendChatMessage(".lea 70153") SendChatMessage(".lea 58203") SendChatMessage(".lea 110154") SendChatMessage(".lea 105734") SendChatMessage(".lea 104945") SendChatMessage(".lea 80681") SendChatMessage(".lea 80676") SendChatMessage(".lea 95479") SendChatMessage(".lea 95480") SendChatMessage(".lea 81041") SendChatMessage(".lea 94980") SendChatMessage(".lea 42336") SendChatMessage(".lea 83615") SendChatMessage(".lea 83610") SendChatMessage(".lea 86600") SendChatMessage(".lea 86600") SendChatMessage(".lea 84823") SendChatMessage(".lea 81245") SendChatMessage(".lea 82612") SendChatMessage(".lea 92372") SendChatMessage(".lea 80126") SendChatMessage(".lea 79756") SendChatMessage(".lea 79827") SendChatMessage(".lea 79832") SendChatMessage(".lea 76183") SendChatMessage(".lea 101624") SendChatMessage(".lea 84594") SendChatMessage(".lea 107082") SendChatMessage(".lea 79116") SendChatMessage(".lea 84401") SendChatMessage(".lea 85234") SendChatMessage(".lea 92718") SendChatMessage(".lea 92719") SendChatMessage(".lea 71459") SendChatMessage(".lea 81083") SendChatMessage(".lea 81084") SendChatMessage(".lea 82020") SendChatMessage(".lea 93090") SendChatMessage(".lea 69191") SendChatMessage(".lea 90085") SendChatMessage(".lea 79157") SendChatMessage(".lea 79252") SendChatMessage(".lea 81723") SendChatMessage(".lea 97134") SendChatMessage(".lea 100320") SendChatMessage(".lea 69356") SendChatMessage(".lea 9487") SendChatMessage(".lea 79116") SendChatMessage(".lea 668") end)
+	Brikabrok:addToScroll(spellsSix)
+
+	
+	
+   Brikabrok:createHeading("Spellviskit")
+
+   idSVK = 1
+
+   local SVK = AceGUI:Create("EditBox")
+   SVK:SetText(idSVK)
+   SVK:SetPoint("Center")
+   SVK:SetLabel("Spellviskit ID")
+   Brikabrok:addToScroll(SVK)
+
+   Brikabrok.guidEditBox = idSVK
+
+   local TrySVK = AceGUI:Create("Button")
+   TrySVK:SetPoint("Center")
+   TrySVK:SetText("Essayer")
+   TrySVK:SetCallback("OnClick", function() SendChatMessage(".spellviskit "..SVK:GetText()) end)
+   Brikabrok:addToScroll(TrySVK)
+
+
+   local UnSVK = AceGUI:Create("Button")
+   UnSVK:SetPoint("Center")
+   UnSVK:SetText("Retirer")
+   UnSVK:SetCallback("OnClick", function() SendChatMessage(".unspellviskit "..SVK:GetText()) end)
+   Brikabrok:addToScroll(UnSVK)
+
+   local IncSVK = AceGUI:Create("Button")
+   IncSVK:SetPoint("Center")
+   IncSVK:SetText("Suivant")
+   IncSVK:SetCallback("OnClick", function() SendChatMessage(".unspellviskit "..SVK:GetText()) idSVK=random(110000) SVK:SetText(idSVK) SendChatMessage(".spellviskit "..SVK:GetText()) print("Spellviskit ", idSVK) end)
+   Brikabrok:addToScroll(IncSVK)
+
+
+   Brikabrok:createHeading("Spellvis")
+
+   idSV = 1
+
+   local SV = AceGUI:Create("EditBox")
+   SV:SetText(idSVK)
+   SV:SetPoint("Center")
+   SV:SetLabel("Spellvis ID")
+   Brikabrok:addToScroll(SV)
+
+   Brikabrok.guidEditBox = idSV
+
+   local TrySV = AceGUI:Create("Button")
+   TrySV:SetPoint("Center")
+   TrySV:SetText("Essayer")
+   TrySV:SetCallback("OnClick", function() SendChatMessage(".spellvis "..SV:GetText()) end)
+   Brikabrok:addToScroll(TrySV)
+
+
+   local UnSV = AceGUI:Create("Button")
+   UnSV:SetPoint("Center")
+   UnSV:SetText("Retirer")
+   UnSV:SetCallback("OnClick", function() SendChatMessage(".unspellvis "..SV:GetText()) end)
+   Brikabrok:addToScroll(UnSV)
+
+   local IncSV = AceGUI:Create("Button")
+   IncSV:SetPoint("Center")
+   IncSV:SetText("Suivant")
+   IncSV:SetCallback("OnClick", function() SendChatMessage(".unspellvis "..SV:GetText()) idSV=random(110000) SV:SetText(idSV) SendChatMessage(".spellvis "..SV:GetText()) print("Spellvis ", idSV) end)
+   Brikabrok:addToScroll(IncSV)
+
+end
 
 --[[
 **	 SelectGroup
@@ -342,7 +447,7 @@ mainFrame:SetLayout("Fill")
 -- Add tabs here
 local tab =  AceGUI:Create("TabGroup")
 tab:SetLayout("Flow")
-tab:SetTabs({{text="Spells", value="tab1"},{text="Gobs", value="tab2"}, {text="Forge", value="tab3"}, {text="Divers", value="tab4"}, {text="Animations", value="tab5"}, {text="Macros", value="tab6"}})
+tab:SetTabs({{text="Spells", value="tab1"},{text="Gobs", value="tab2"},{text="Forge", value="tab3"}, {text="Divers", value="tab4"}, {text="Animations", value="tab5"}, {text="Macros", value="tab6"}, {text="Autres", value="tab7"}})
 tab:SetCallback("OnGroupSelected", SelectGroup)
 tab:SelectTab("tab1")
 mainFrame:AddChild(tab)

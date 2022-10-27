@@ -182,6 +182,55 @@ local function DrawGroupSecondary2(container)
     end)
     brikabrokEasyScroll:AddChild(qsButton)
 
+    local qsButtonDel = AceGUI:Create("Button")
+    qsButtonDel:SetText("Delete")
+    qsButtonDel:SetWidth(200)
+    qsButtonDel:SetCallback("OnClick", function()
+      SendChatMessage(".gob del "..qsGob:GetText())
+    end)
+    brikabrokEasyScroll:AddChild(qsButtonDel)
+	
+    local qsButtonGo = AceGUI:Create("Button")
+    qsButtonGo:SetText("Aller à")
+    qsButtonGo:SetWidth(200)
+    qsButtonGo:SetCallback("OnClick", function()
+      SendChatMessage(".go object "..qsGob:GetText())
+    end)
+    brikabrokEasyScroll:AddChild(qsButtonGo)
+	
+    local qsActivate = AceGUI:Create("Button")
+    qsActivate:SetText("Activer")
+    qsActivate:SetWidth(200)
+    qsActivate:SetCallback("OnClick", function() SendChatMessage(".gob act "..qsGob:GetText(), "GUILD") end)
+    brikabrokEasyScroll:AddChild(qsActivate)
+
+    local qsGobSe = AceGUI:Create("EditBox")
+    qsGobSe:SetText("Nom du GOB à rechercher")
+    qsGobSe:SetPoint("CENTER")
+    qsGobSe:SetLabel("GOB NAME")
+    brikabrokEasyScroll:AddChild(qsGobSe)
+
+    local qsButtonTar = AceGUI:Create("Button")
+    qsButtonTar:SetText("ID")
+    qsButtonTar:SetWidth(200)
+    qsButtonTar:SetCallback("OnClick", function() 
+      SendChatMessage(".gob tar "..qsGobSe:GetText(), "GUILD")
+    end)
+    brikabrokEasyScroll:AddChild(qsButtonTar)
+
+    local qsSliderSize = AceGUI:Create("Slider")
+    qsSliderSize:SetLabel("Taille")
+    qsSliderSize:SetValue(0)
+    qsSliderSize:SetPoint("CENTER", UIParent, "CENTER")
+    qsSliderSize:SetSliderValues(0.1,50,0.1)
+    brikabrokEasyScroll:AddChild(qsSliderSize)
+
+    local callbacksSize = {
+    OnValueChanged = function (value, container, event, group)  end ,
+    OnMouseUp = function (self) SendChatMessage(".gob s scale "..qsGob:GetText().." "..qsSliderSize.editbox:GetText(), "SAY") end ,
+    }
+    Brikabrok:addCallbacks(qsSliderSize, callbacksSize)
+
     local headingrotate = AceGUI:Create("Heading")
     headingrotate:SetText("Rotation des gobs")
     headingrotate:SetFullWidth(true)
